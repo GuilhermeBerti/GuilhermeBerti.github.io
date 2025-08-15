@@ -2,161 +2,138 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio - Guilherme Berti</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Portfólio – Guilherme Berti</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f9fafb;
-      --primary: #2563eb;
-      --secondary: #1e293b;
-      --light: #ffffff;
-      --shadow: rgba(0,0,0,0.1);
+      --bg: #f5f5f5;
+      --text: #333;
+      --accent: #0066cc;
+      --card: #ffffff;
+      --shadow: rgba(0,0,0,0.05);
     }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: var(--bg);
-      color: var(--secondary);
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
       line-height: 1.6;
     }
-
     header {
-      background: var(--primary);
-      color: var(--light);
-      padding: 1.5rem;
+      background: var(--card);
+      padding: 2rem;
       text-align: center;
-      position: sticky;
-      top: 0;
-      box-shadow: 0 2px 6px var(--shadow);
+      box-shadow: 0 2px 4px var(--shadow);
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
+    header h1 { font-size: 2.5rem; font-weight: 600; }
+    header p { margin-top: 0.5rem; font-size: 1.125rem; color: var(--accent); }
+    nav { margin-top: 1.5rem; }
     nav a {
-      color: var(--light);
       margin: 0 1rem;
       text-decoration: none;
-      font-weight: bold;
+      color: var(--text);
+      font-weight: 600;
+      position: relative;
     }
-
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 2rem 1rem;
+    nav a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 3px;
+      background: var(--accent);
+      transition: width .3s;
+      position: absolute;
+      bottom: -4px; left: 50%;
+      transform: translateX(-50%);
     }
+    nav a:hover::after { width: 60%; }
 
+    section { padding: 4rem 1rem; max-width: 800px; margin: auto; }
     h2 {
-      border-left: 6px solid var(--primary);
-      padding-left: 10px;
+      font-size: 1.75rem;
       margin-bottom: 1rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.75rem;
     }
 
-    .projetos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-
+    .projetos { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
     .card {
-      background: var(--light);
-      padding: 1rem;
+      background: var(--card);
+      padding: 1.5rem;
       border-radius: 8px;
-      box-shadow: 0 2px 6px var(--shadow);
-      transition: transform 0.2s ease;
+      box-shadow: 0 2px 4px var(--shadow);
+      transition: transform .3s;
     }
-
-    .card:hover {
-      transform: scale(1.03);
-    }
-
-    .card h3 {
-      margin-top: 0;
-    }
-
+    .card:hover { transform: translateY(-5px); }
+    .card h3 { margin-bottom: 0.5rem; }
     .btn {
       display: inline-block;
+      margin-top: 1rem;
       padding: 0.5rem 1rem;
-      background: var(--primary);
-      color: var(--light);
+      background: var(--accent);
+      color: #fff;
       border-radius: 4px;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      transition: background .3s;
     }
+    .btn:hover { background: darken(var(--accent), 10%); }
 
     footer {
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-      background: var(--secondary);
-      color: var(--light);
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: var(--text);
     }
-
     @media (max-width: 600px) {
-      nav a {
-        display: block;
-        margin: 0.5rem 0;
-      }
+      header h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>Guilherme Berti</h1>
+    <p>Engenheiro de Dados em Desenvolvimento</p>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#certificacoes">Certificações</a>
+      <a href="#projetos">Projetos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
 
-<header>
-  <h1>Guilherme Berti</h1>
-  <p>Engenheiro de Dados em Desenvolvimento</p>
-  <nav>
-    <a href="#sobre">Sobre</a>
-    <a href="#certificacoes">Certificações</a>
-    <a href="#projetos">Projetos</a>
-    <a href="#contato">Contato</a>
-  </nav>
-</header>
+  <section id="sobre">
+    <h2>Sobre Mim</h2>
+    <p>Sou um Engenheiro de Dados em desenvolvimento... (seu texto completo aqui)</p>
+  </section>
 
-<section id="sobre">
-  <h2>Sobre Mim</h2>
-  <p>Sou um Engenheiro de Dados em desenvolvimento, com sólida base em Python, SQL e Apache Spark, utilização de pipelines de dados, integração de sistemas e arquiteturas em nuvem. Tenho experiência prática com Data Lake, ETL/ELT, processamento de dados em larga escala, utilizando Microsoft Azure para criar soluções eficientes e escaláveis.</p>
-  <p>Atualmente, desenvolvo projetos próprios e contribuo para iniciativas que envolvem engenharia de dados, automação de processos e análise avançada, sempre com foco em transformar dados brutos em informações estratégicas para tomada de decisão. Tenho perfil proativo, analítico e colaborativo, atuando com facilidade em equipes multidisciplinares e projetos desafiadores.</p>
-  <p><strong>Formação:</strong> Graduação em Ciência da Computação — UFU (Universidade Federal de Uberlândia)</p>
-</section>
+  <section id="certificacoes">
+    <h2>Certificações</h2>
+    <ul>
+      <li><a href="https://learn.microsoft.com/api/credentials/share/pt-br/GuilhermeBerti-8069/83C23B8DD4FEB8B4?sharingId=58402B125345453D" target="_blank">Microsoft Certified: Azure Fundamentals (AZ-900)</a></li>
+      <li><a href="https://learn.microsoft.com/api/credentials/share/pt-br/GuilhermeBerti-8069/2D74AEB186B358A?sharingId=58402B125345453D" target="_blank">Microsoft Certified: Data Fundamentals (DP-900)</a></li>
+    </ul>
+  </section>
 
-<section id="certificacoes">
-  <h2>Certificações</h2>
-  <ul>
-    <li><a href="https://learn.microsoft.com/api/credentials/share/pt-br/GuilhermeBerti-8069/83C23B8DD4FEB8B4?sharingId=58402B125345453D" target="_blank">Microsoft Certified: Azure Fundamentals (AZ-900)</a></li>
-    <li><a href="https://learn.microsoft.com/api/credentials/share/pt-br/GuilhermeBerti-8069/2D74AEB186B358A?sharingId=58402B125345453D" target="_blank">Microsoft Certified: Data Fundamentals (DP-900)</a></li>
-  </ul>
-</section>
-
-<section id="projetos">
-  <h2>Projetos</h2>
-  <div class="projetos">
-    <div class="card">
-      <h3>Data Engineer Azure</h3>
-      <p>Repositório com projetos práticos utilizando Azure Data Factory, Data Lake e processamento de dados com Spark.</p>
-      <a class="btn" href="https://github.com/GuilhermeBerti/DataEngineerAzure" target="_blank">Ver no GitHub</a>
+  <section id="projetos">
+    <h2>Projetos</h2>
+    <div class="projetos">
+      <div class="card">
+        <h3>Data Engineer Azure</h3>
+        <p>Projetos práticos com Azure Data Factory, Data Lake, Spark...</p>
+        <a class="btn" href="https://github.com/GuilhermeBerti/DataEngineerAzure" target="_blank">Ver no GitHub</a>
+      </div>
+      <!-- adicione mais cards aqui -->
     </div>
-    <!-- Você pode adicionar mais projetos aqui -->
-  </div>
-</section>
+  </section>
 
-<section id="contato">
-  <h2>Contato</h2>
-  <p>💼 <a href="https://www.linkedin.com/in/guilhermedecastroberti/" target="_blank">LinkedIn</a></p>
-  <p>🐙 <a href="https://github.com/GuilhermeBerti" target="_blank">GitHub</a></p>
-  <p>✉️ Email: voce@exemplo.com</p>
-</section>
+  <section id="contato">
+    <h2>Contato</h2>
+    <p><a href="https://www.linkedin.com/in/guilhermedecastroberti/" target="_blank">LinkedIn</a> • <a href="https://github.com/GuilhermeBerti" target="_blank">GitHub</a> • Email: voce@exemplo.com</p>
+  </section>
 
-<footer>
-  &copy; <span id="ano"></span> Guilherme Berti - Todos os direitos reservados
-</footer>
-
-<script>
-  document.getElementById("ano").textContent = new Date().getFullYear();
-</script>
-
+  <footer>&copy; <span id="ano"></span> Guilherme Berti</footer>
+  <script>document.getElementById('ano').textContent = new Date().getFullYear();</script>
 </body>
 </html>
