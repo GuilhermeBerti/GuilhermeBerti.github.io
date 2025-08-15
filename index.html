@@ -1,139 +1,233 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfólio – Guilherme Berti</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guilherme Berti | Portfólio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f5f5f5;
-      --text: #333;
-      --accent: #0066cc;
-      --card: #ffffff;
-      --shadow: rgba(0,0,0,0.05);
+      --bg: #000;           /* fundo principal */
+      --deep: #0c1a33;      /* seção projetos */
+      --accent: #ef4444;    /* vermelho para detalhes */
+      --text: #e5e7eb;      /* cinza claro para textos */
+      --muted: #9ca3af;     /* cinza médio */
+      --card: #0b1222;      /* cards escuros */
+      --shadow: rgba(0,0,0,.25);
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
+    /* HEADER / NAV */
     header {
-      background: var(--card);
-      padding: 2rem;
-      text-align: center;
-      box-shadow: 0 2px 4px var(--shadow);
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(0,0,0,.7);
+      backdrop-filter: saturate(140%) blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    header h1 { font-size: 2.5rem; font-weight: 600; }
-    header p { margin-top: 0.5rem; font-size: 1.125rem; color: var(--accent); }
-    nav { margin-top: 1.5rem; }
-    nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: var(--text);
-      font-weight: 600;
-      position: relative;
+    .nav {
+      max-width: 90rem; margin: 0 auto; padding: .9rem 1rem;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    nav a::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 3px;
-      background: var(--accent);
-      transition: width .3s;
-      position: absolute;
-      bottom: -4px; left: 50%;
-      transform: translateX(-50%);
-    }
-    nav a:hover::after { width: 60%; }
+    .brand { font-weight: 700; letter-spacing: .5px; }
+    .brand span { color: var(--accent); }
+    .links { display: flex; gap: 1rem; }
+    .links a { color: var(--text); text-decoration: none; font-weight: 500; opacity: .9; }
+    .links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
 
-    section { padding: 4rem 1rem; max-width: 800px; margin: auto; }
-    h2 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-      border-left: 4px solid var(--accent);
-      padding-left: 0.75rem;
+    /* HERO */
+    .hero {
+      position: relative; min-height: 92vh; display: grid; place-items: center; overflow: hidden;
+      padding: 6rem 1.5rem 10rem;
     }
+    .hero-grid {
+      max-width: 90rem; width: 100%; display: grid; gap: 3rem;
+      grid-template-columns: 1fr; align-items: center;
+    }
+    @media (min-width: 900px){ .hero-grid { grid-template-columns: 1.1fr .9fr; gap: 5rem; } }
+    .title {
+      font-size: clamp(2.4rem, 7vw, 5rem); font-weight: 700; color: var(--accent);
+      margin: 0 0 .75rem 0; white-space: nowrap;
+    }
+    .cursor { position: relative; left: 3px; animation: blink .9s steps(2) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .lead { color: #cbd5e1; text-align: justify; }
+    .blob {
+      position: relative; display: grid; place-items: center;
+    }
+    .circle-bg { position: absolute; width: 420px; height: 420px; border-radius: 50%;
+      background: radial-gradient(60% 60% at 50% 50%, #0b1222, #000 70%);
+      opacity: .7; filter: blur(40px);
+    }
+    .device {
+      position: relative; z-index: 2; width: min(72vw, 460px); aspect-ratio: 4/3; border-radius: 18px;
+      background: linear-gradient(180deg,#0f172a,#0b1222); box-shadow: 0 20px 60px var(--shadow);
+      border: 1px solid rgba(255,255,255,.06); display: grid; place-items: center;
+      overflow: hidden;
+    }
+    .code-line { width: 80%; height: 10px; border-radius: 6px; background: rgba(255,255,255,.06); margin: 8px 0; }
+    .code-line.wide { width: 88%; }
+    .code-line.thin { height: 6px; width: 60%; }
 
-    .projetos { display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-    .card {
-      background: var(--card);
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px var(--shadow);
-      transition: transform .3s;
+    /* WAVE SEPARATORS */
+    .wave { display:block; width:100%; height:120px; }
+
+    /* SEÇÃO PROJETOS */
+    .section { padding: 4rem 1.5rem; }
+    .section.deep { background: var(--deep); }
+    .section h2 {
+      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
+      margin: 0 auto 2rem; max-width: 60rem; position: relative; padding-left: .9rem;
     }
-    .card:hover { transform: translateY(-5px); }
-    .card h3 { margin-bottom: 0.5rem; }
-    .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background: var(--accent);
-      color: #fff;
+    .section h2::before{
+      content:""; position:absolute; left:0; top:.35rem; width:4px; height: calc(100% - .7rem); background: var(--accent);
       border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background .3s;
     }
-    .btn:hover { background: darken(var(--accent), 10%); }
+    .grid {
+      max-width: 90rem; margin: 0 auto; display: grid; gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+    .card {
+      background: var(--card); border: 1px solid rgba(255,255,255,.06);
+      border-radius: 16px; padding: 1.25rem; box-shadow: 0 10px 30px var(--shadow);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px var(--shadow); }
+    .card h3 { margin: .25rem 0 .5rem; }
+    .card p { color: var(--muted); margin: 0 0 .75rem; }
+    .actions { display:flex; gap:.8rem; }
+    .btn {
+      display:inline-block; padding:.55rem .9rem; border-radius:10px; font-weight:600; text-decoration:none;
+      background: var(--accent); color:#fff; border: 1px solid transparent;
+    }
+    .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.2); }
+    .btn:hover { filter: brightness(1.05); }
 
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: var(--text);
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
-    }
+    /* CONTATO & FOOTER */
+    .contact { text-align:center; }
+    .contact a { color:#fff; }
+    footer { background:#000; color:#fff; text-align:center; padding: 1.2rem; font-size:.95rem; }
+
+    /* REVEAL ANIMATION */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.show { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
+  <!-- NAV -->
   <header>
-    <h1>Guilherme Berti</h1>
-    <p>Engenheiro de Dados em Desenvolvimento</p>
-    <nav>
-      <a href="#sobre">Sobre</a>
-      <a href="#certificacoes">Certificações</a>
-      <a href="#projetos">Projetos</a>
-      <a href="#contato">Contato</a>
-    </nav>
+    <div class="nav">
+      <div class="brand">Guilherme <span>Berti</span></div>
+      <nav class="links">
+        <a href="#sobre">Sobre</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
   </header>
 
-  <section id="sobre">
-    <h2>Sobre Mim</h2>
-    <p>Sou um Engenheiro de Dados em desenvolvimento... (seu texto completo aqui)</p>
-  </section>
-
-  <section id="certificacoes">
-    <h2>Certificações</h2>
-    <ul>
-      <li><a href="https://learn.microsoft.com/api/credentials/share/pt-br/GuilhermeBerti-8069/83C23B8DD4FEB8B4?sharingId=58402B125345453D" target="_blank">Microsoft Certified: Azure Fundamentals (AZ-900)</a></li>
-      <li><a href="https://learn.microsoft.com/api/credentials/share/pt-br/GuilhermeBerti-8069/2D74AEB186B358A?sharingId=58402B125345453D" target="_blank">Microsoft Certified: Data Fundamentals (DP-900)</a></li>
-    </ul>
-  </section>
-
-  <section id="projetos">
-    <h2>Projetos</h2>
-    <div class="projetos">
-      <div class="card">
-        <h3>Data Engineer Azure</h3>
-        <p>Projetos práticos com Azure Data Factory, Data Lake, Spark...</p>
-        <a class="btn" href="https://github.com/GuilhermeBerti/DataEngineerAzure" target="_blank">Ver no GitHub</a>
+  <!-- HERO -->
+  <section class="hero" id="sobre">
+    <div class="hero-grid">
+      <div class="reveal">
+        <h1 class="title">Bem-vindo<span class="cursor">_</span></h1>
+        <p class="lead">
+          👋 Olá, sou <strong>Guilherme Berti</strong> — <strong>Engenheiro de Dados</strong> em desenvolvimento, com base sólida em
+          <strong>Python</strong>, <strong>SQL</strong> e <strong>Apache Spark</strong>, construindo <strong>pipelines de dados</strong>, integrações e arquiteturas em nuvem (Azure).
+          Experiência prática com <strong>Data Lake</strong>, <strong>ETL/ELT</strong> e processamento em larga escala para soluções eficientes e escaláveis.
+          <br><br>
+          Hoje desenvolvo projetos próprios e contribuo com iniciativas envolvendo engenharia de dados, automação de processos e análise avançada — transformando dados brutos em <strong>insights estratégicos</strong> para decisão. Perfil <strong>proativo</strong>, <strong>analítico</strong> e <strong>colaborativo</strong>.
+          <br><br>
+          <strong>Formação</strong>: Ciência da Computação — UFU (Universidade Federal de Uberlândia)
+          <br>
+          <strong>Certificações</strong>: AZ-900 • DP-900
+        </p>
       </div>
-      <!-- adicione mais cards aqui -->
+      <div class="blob reveal" style="justify-self:center;">
+        <div class="circle-bg" aria-hidden="true"></div>
+        <div class="device" aria-hidden="true">
+          <div class="code-line wide"></div>
+          <div class="code-line"></div>
+          <div class="code-line thin"></div>
+          <div class="code-line wide"></div>
+          <div class="code-line"></div>
+        </div>
+      </div>
+    </div>
+    <!-- wave bottom -->
+    <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#0c1a33" d="M0,0 C360,100 1080,100 1440,0 L1440,120 L0,120 Z"/></svg>
+  </section>
+
+  <!-- PROJETOS -->
+  <section class="section deep" id="projetos">
+    <h2>Projetos</h2>
+    <div class="grid reveal">
+      <!-- Card 1 -->
+      <article class="card">
+        <h3>Data Engineer Azure</h3>
+        <p>Projetos práticos com Azure Data Factory, Data Lake e processamento de dados com Spark / PySpark.</p>
+        <div class="actions">
+          <a class="btn" href="https://github.com/GuilhermeBerti/DataEngineerAzure" target="_blank" rel="noopener">Ver no GitHub</a>
+        </div>
+      </article>
+
+      <!-- Adicione mais cards conforme necessário -->
     </div>
   </section>
 
-  <section id="contato">
+  <!-- wave flipped -->
+  <div style="transform: rotate(180deg); margin-top:-1px;">
+    <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#0c1a33" d="M0,0 C360,100 1080,100 1440,0 L1440,120 L0,120 Z"/></svg>
+  </div>
+
+  <!-- CONTATO -->
+  <section class="section contact" id="contato">
     <h2>Contato</h2>
-    <p><a href="https://www.linkedin.com/in/guilhermedecastroberti/" target="_blank">LinkedIn</a> • <a href="https://github.com/GuilhermeBerti" target="_blank">GitHub</a> • Email: voce@exemplo.com</p>
+    <p>💼 <a href="https://www.linkedin.com/in/guilhermedecastroberti/" target="_blank" rel="noopener">LinkedIn</a> &nbsp;•&nbsp;
+       🐙 <a href="https://github.com/GuilhermeBerti" target="_blank" rel="noopener">GitHub</a></p>
+    <p>✉️ <a href="mailto:guilhermedecastroberti@gmail.com">guilhermedecastroberti@gmail.com</a></p>
   </section>
 
-  <footer>&copy; <span id="ano"></span> Guilherme Berti</footer>
-  <script>document.getElementById('ano').textContent = new Date().getFullYear();</script>
+  <footer>
+    © <span id="year"></span> <strong>Guilherme Berti</strong>. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    // Atualiza ano
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Efeito reveal on scroll
+    const onReveal = () => {
+      const els = document.querySelectorAll('.reveal');
+      els.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) el.classList.add('show');
+      });
+    };
+    window.addEventListener('scroll', onReveal); window.addEventListener('load', onReveal);
+
+    // Pequena animação de digitação (simples, sem libs)
+    const title = document.querySelector('.title');
+    const base = 'Bem-vindo';
+    const cursor = document.querySelector('.cursor');
+    let i = 0;
+    function type() {
+      const text = base.slice(0, i);
+      title.firstChild.nodeValue = text; // atualiza texto antes do cursor
+      i = i < base.length ? i + 1 : base.length;
+      if (i < base.length) setTimeout(type, 80);
+    }
+    setTimeout(type, 400);
+  </script>
 </body>
 </html>
