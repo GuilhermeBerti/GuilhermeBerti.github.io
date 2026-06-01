@@ -1,310 +1,1204 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Guilherme de Castro Berti | Portfólio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #000;           /* fundo principal */
-      --deep: #0c1a33;      /* seção projetos */
-      --accent: #ef4444;    /* vermelho para detalhes */
-      --text: #e5e7eb;      /* cinza claro para textos */
-      --muted: #9ca3af;     /* cinza médio */
-      --card: #0b1222;      /* cards escuros */
-      --shadow: rgba(0,0,0,.25);
-    }
-    * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; }
-    body {
-      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 
-    /* HEADER / NAV */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      background: rgba(0,0,0,.7);
-      backdrop-filter: saturate(140%) blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav {
-      max-width: 90rem; margin: 0 auto; padding: .9rem 1rem;
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .brand { font-weight: 700; letter-spacing: .5px; }
-    .brand span { color: var(--accent); }
-    .links { display: flex; gap: 1rem; }
-    .links a { color: var(--text); text-decoration: none; font-weight: 500; opacity: .9; }
-    .links a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+  :root {
+    --bg: #0e0e0e;
+    --surface: #161616;
+    --card: #1c1c1c;
+    --card-hover: #222222;
+    --border: #2a2a2a;
+    --border-light: #333333;
+    --text: #f0f0f0;
+    --text-secondary: #8a8a8a;
+    --text-tertiary: #555;
+    --accent: #00C853;
+    --accent-dim: rgba(0,200,83,0.12);
+    --accent-glow: rgba(0,200,83,0.25);
+    --danger: #FF5252;
+    --danger-dim: rgba(255,82,82,0.12);
+    --warn: #FFB300;
+    --warn-dim: rgba(255,179,0,0.12);
+    --blue: #448AFF;
+    --blue-dim: rgba(68,138,255,0.12);
+    --purple: #E040FB;
+    --purple-dim: rgba(224,64,251,0.12);
+    --font: 'DM Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
+  }
 
-    /* HERO */
-    .hero {
-      background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,1)), 
-              url('https://wallpapercave.com/wp/wp4748439.jpg');
-      position: relative; min-height: 92vh; display: grid; place-items: center; overflow: hidden;
-      padding: 6rem 1.5rem 10rem;
-    }
-    .hero-grid {
-      max-width: 90rem; width: 100%; display: grid; gap: 3rem;
-      grid-template-columns: 1fr; align-items: center;
-    }
-    @media (min-width: 900px){ .hero-grid { grid-template-columns: 1.1fr .9fr; gap: 5rem; } }
-    .title {
-      font-size: clamp(2.4rem, 7vw, 5rem); font-weight: 700; color: var(--accent);
-      margin: 0 0 .75rem 0; white-space: nowrap;
-    }
-    .cursor { position: relative; animation: blink .9s steps(2) infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
-    .lead { color: #cbd5e1; text-align: justify; }
-    .blob {
-      position: relative; display: grid; place-items: center;
-    }
-    .circle-bg { position: absolute; width: 420px; height: 420px; border-radius: 50%;
-      background: radial-gradient(60% 60% at 50% 50%, #0b1222, #000 70%);
-      opacity: .7; filter: blur(40px);
-    }
-    .device {
-      position: relative; z-index: 2; width: min(72vw, 460px); aspect-ratio: 4/3; border-radius: 18px;
-      background: linear-gradient(180deg,#0f172a,#0b1222); box-shadow: 0 20px 60px var(--shadow);
-      border: 1px solid rgba(255,255,255,.06); display: grid; place-items: center;
-      overflow: hidden;
-    }
-    .code-line { width: 80%; height: 10px; border-radius: 6px; background: rgba(255,255,255,.06); margin: 8px 0; }
-    .code-line.wide { width: 88%; }
-    .code-line.thin { height: 6px; width: 60%; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* WAVE SEPARATORS */
-    .wave { display:block; width:100%; height:120px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-    /* SEÇÃO PROJETOS */
-    .section { padding: 4rem 1.5rem; }
-    .section.deep { background: var(--deep); }
-    .section h2 {
-      font-size: clamp(1.6rem, 3.2vw, 2.2rem);
-      margin: 0 auto 2rem; max-width: 60rem; position: relative; padding-left: .9rem;
-    }
-    .section h2::before{
-      content:""; position:absolute; left:0; top:.35rem; width:4px; height: calc(100% - .7rem); background: var(--accent);
-      border-radius: 4px;
-    }
-    .grid {
-      max-width: 90rem; margin: 0 auto; display: grid; gap: 1.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    }
-    .card {
-      background: var(--card); border: 1px solid rgba(255,255,255,.06);
-      border-radius: 16px; padding: 1.25rem; box-shadow: 0 10px 30px var(--shadow);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .card:hover { transform: translateY(-6px); box-shadow: 0 18px 40px var(--shadow); }
-    .card h3 { margin: .25rem 0 .5rem; }
-    .card p { color: var(--muted); margin: 0 0 .75rem; }
-    .actions { display:flex; gap:.8rem; }
-    .btn {
-      display:inline-block; padding:.55rem .9rem; border-radius:10px; font-weight:600; text-decoration:none;
-      background: var(--accent); color:#fff; border: 1px solid transparent;
-    }
-    .btn.ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.2); }
-    .btn:hover { filter: brightness(1.05); }
+  /* NAV */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 52px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .nav-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:0.5; transform:scale(1.3); }
+  }
+  .nav-tabs {
+    display: flex;
+    gap: 2px;
+  }
+  .nav-tab {
+    padding: 6px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.2s;
+    border: none;
+    background: none;
+    white-space: nowrap;
+  }
+  .nav-tab:hover { color: var(--text); background: var(--card); }
+  .nav-tab.active {
+    color: var(--text);
+    background: var(--card);
+    box-shadow: inset 0 -2px 0 var(--accent);
+  }
+  .nav-meta {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-family: var(--mono);
+  }
 
-    /* CONTATO & FOOTER */
-    .contact { text-align:center; }
-    .contact a { color:#fff; }
-    footer { background:#000; color:#fff; text-align:center; padding: 1.2rem; font-size:.95rem; }
+  /* PAGES */
+  .page { display: none; padding: 20px 24px 32px; animation: fadeIn 0.3s ease; }
+  .page.active { display: block; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
 
-    /* REVEAL ANIMATION */
-    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
-    .reveal.show { opacity: 1; transform: translateY(0); }
+  /* PAGE HEADER */
+  .page-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text);
+  }
+  .page-subtitle {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 3px;
+    font-family: var(--mono);
+  }
+  .page-period {
+    font-size: 11px;
+    color: var(--text-secondary);
+    background: var(--card);
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+  }
 
-     /* GALERIA */
-    .gallery-img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 6px 20px var(--shadow);
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .gallery-img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 10px 30px var(--shadow);
-    }
-  </style>
+  /* GRID SYSTEM */
+  .grid { display: grid; gap: 12px; }
+  .cols-7 { grid-template-columns: repeat(7, 1fr); }
+  .cols-6 { grid-template-columns: repeat(6, 1fr); }
+  .cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .cols-2 { grid-template-columns: 1fr 1fr; }
+  .cols-2-1 { grid-template-columns: 2fr 1fr; }
+  .cols-1-2 { grid-template-columns: 1fr 2fr; }
+  .cols-3-2 { grid-template-columns: 3fr 2fr; }
+  .span-2 { grid-column: span 2; }
+  .span-3 { grid-column: span 3; }
+  .span-4 { grid-column: span 4; }
+
+  /* KPI CARD */
+  .kpi {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .kpi:hover { border-color: var(--border-light); }
+  .kpi-label {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .kpi-value {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .kpi-sub {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+  .kpi-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-top: 4px;
+  }
+  .badge-green { background: var(--accent-dim); color: var(--accent); }
+  .badge-red { background: var(--danger-dim); color: var(--danger); }
+  .badge-blue { background: var(--blue-dim); color: var(--blue); }
+  .badge-warn { background: var(--warn-dim); color: var(--warn); }
+  .kpi-accent-line {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+  }
+
+  /* CHART CARD */
+  .chart-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    overflow: hidden;
+  }
+  .chart-card:hover { border-color: var(--border-light); }
+  .chart-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .chart-desc {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    margin-bottom: 14px;
+  }
+
+  /* BAR CHART */
+  .bar-chart { display: flex; flex-direction: column; gap: 8px; }
+  .bar-row {
+    display: grid;
+    align-items: center;
+    gap: 8px;
+  }
+  .bar-row-3 { grid-template-columns: 110px 1fr 60px; }
+  .bar-row-4 { grid-template-columns: 130px 1fr 70px; }
+  .bar-row-2 { grid-template-columns: 90px 1fr 55px; }
+  .bar-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .bar-track {
+    background: rgba(255,255,255,0.04);
+    border-radius: 3px;
+    height: 8px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.8s cubic-bezier(.4,0,.2,1);
+  }
+  .bar-val {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--text-secondary);
+    text-align: right;
+  }
+
+  /* LINE CHART SVG */
+  .line-chart-wrap { width: 100%; overflow: hidden; }
+
+  /* DONUT */
+  .donut-wrap {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .donut-legend { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .legend-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .legend-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    flex: 1;
+  }
+  .legend-val {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* TABLE */
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 0 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  .data-table td {
+    font-size: 12px;
+    padding: 9px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    color: var(--text-secondary);
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: rgba(255,255,255,0.02); color: var(--text); }
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; height: 20px;
+    border-radius: 5px;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--mono);
+  }
+  .rank-1 { background: rgba(255,179,0,0.2); color: var(--warn); }
+  .rank-2 { background: rgba(189,189,189,0.15); color: #bdbdbd; }
+  .rank-3 { background: rgba(139,90,43,0.2); color: #cd7f32; }
+  .rank-n { background: var(--border); color: var(--text-tertiary); }
+
+  /* SPARKLINE ROW */
+  .spark-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .spark-row:last-child { border-bottom: none; }
+
+  /* STAR RATING */
+  .stars { color: var(--warn); font-size: 11px; letter-spacing: 1px; }
+
+  /* PROGRESS RING */
+  .progress-ring-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* HIGHLIGHT BOX */
+  .highlight-box {
+    background: var(--accent-dim);
+    border: 1px solid rgba(0,200,83,0.2);
+    border-radius: 8px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .highlight-box.danger {
+    background: var(--danger-dim);
+    border-color: rgba(255,82,82,0.2);
+  }
+  .highlight-box.blue {
+    background: var(--blue-dim);
+    border-color: rgba(68,138,255,0.2);
+  }
+  .highlight-label { font-size: 10px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; }
+  .highlight-name { font-size: 14px; font-weight: 700; color: var(--text); margin-top: 2px; }
+  .highlight-meta { font-size: 11px; color: var(--text-secondary); margin-top: 3px; }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-tertiary);
+    margin: 16px 0 8px;
+  }
+
+  /* MONTH CHART */
+  .month-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    height: 80px;
+    padding-top: 8px;
+  }
+  .month-bar-wrap {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    height: 100%;
+  }
+  .month-bar-inner {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    flex: 1;
+  }
+  .month-bar {
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+    min-height: 4px;
+    transition: height 0.6s cubic-bezier(.4,0,.2,1);
+  }
+  .month-label {
+    font-size: 9px;
+    color: var(--text-tertiary);
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* FAIXA ETARIA VISUAL */
+  .faixa-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .faixa-row:last-child { border-bottom: none; }
+  .faixa-label { font-size: 11px; color: var(--text-secondary); width: 45px; flex-shrink: 0; }
+  .faixa-bar-wrap { flex: 1; background: rgba(255,255,255,0.04); border-radius: 2px; height: 6px; }
+  .faixa-bar { height: 100%; border-radius: 2px; }
+  .faixa-pct { font-size: 11px; font-family: var(--mono); color: var(--text-secondary); width: 38px; text-align: right; }
+
+  /* GEO TABLE */
+  .geo-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .geo-row:last-child { border-bottom: none; }
+  .geo-state { font-size: 13px; font-weight: 600; color: var(--text); }
+  .geo-bar-area { flex: 1; margin: 0 12px; height: 4px; background: rgba(255,255,255,0.06); border-radius: 2px; }
+  .geo-bar-fill { height: 100%; border-radius: 2px; background: var(--blue); }
+  .geo-count { font-size: 11px; font-family: var(--mono); color: var(--text-secondary); }
+
+  /* NOTA VISUAL */
+  .nota-big {
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .nota-label { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+
+  /* CANCEL BADGE */
+  .cancel-pct {
+    font-size: 40px;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+    color: var(--danger);
+    line-height: 1;
+  }
+
+  /* TIMELINE DOTS */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .tl-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .tl-item:last-child { border-bottom: none; }
+  .tl-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 3px; flex-shrink: 0; }
+  .tl-text { font-size: 11px; color: var(--text-secondary); }
+  .tl-value { font-size: 12px; font-weight: 600; color: var(--text); margin-left: auto; }
+
+  /* SCROLLABLE TABLE */
+  .table-scroll { max-height: 300px; overflow-y: auto; }
+  .table-scroll::-webkit-scrollbar { width: 4px; }
+  .table-scroll::-webkit-scrollbar-track { background: transparent; }
+  .table-scroll::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 2px; }
+</style>
 </head>
 <body>
-  <!-- NAV -->
-  <header>
-    <div class="nav">
-      <div class="brand">Guilherme de Castro <span>Berti</span></div>
-      <nav class="links">
-        <a href="#sobre">Sobre</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#contato">Contato</a>
-      </nav>
-    </div>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero" id="sobre">
-  <div class="hero-grid">
-    <div class="reveal">
-      <h1 class="title">Bem-vindo<span class="cursor">_</span></h1>
-      <p class="lead">
-        Sou <strong>Guilherme Berti</strong>, <strong>Engenheiro de Dados</strong> formado em 
-        <strong>Ciência da Computação pela UFU</strong>, com atuação focada na construção de 
-        <strong>arquiteturas de dados escaláveis</strong>, <strong>pipelines robustos</strong> e 
-        <strong>soluções orientadas a negócio</strong>.<br><br>
-
-        Tenho experiência sólida em <strong>Python</strong>, <strong>SQL</strong>, 
-        <strong>Apache Spark</strong>, <strong>Azure</strong> e <strong>Databricks</strong>, 
-        desenvolvendo fluxos completos de <strong>ETL/ELT</strong>, modelagem de dados, automação de processos 
-        e integração entre sistemas — sempre com foco em performance, governança e confiabilidade.<br><br>
-
-        Minha trajetória inclui atuação como <strong>Analista de Processos de TI</strong>, onde desenvolvi 
-        uma visão estratégica de cadeia de valor e fluxo de dados desde a origem. Essa experiência fortaleceu 
-        minha capacidade de arquitetar soluções totalmente alinhadas às regras de negócio, garantindo 
-        <strong>qualidade, consistência e geração de valor real</strong> para a organização.<br><br>
-
-        Possuo forte domínio prático em <strong>SQL aplicado ao contexto corporativo</strong>, criação de 
-        consultas complexas, views, relatórios e manipulação estruturada de dados para suporte à decisão.<br><br>
-
-        Atuo no desenvolvimento de <strong>projetos de engenharia de dados ponta a ponta</strong>, 
-        envolvendo coleta automatizada, versionamento, transformação em <strong>Delta Lake</strong>, 
-        orquestração e disponibilização para analytics — estruturando dados brutos em ativos estratégicos.<br><br>
-
-        Sou certificado <strong>Microsoft Azure Fundamentals (AZ-900)</strong> e 
-        <strong>Data Fundamentals (DP-900)</strong>, com forte base em arquitetura cloud, modelagem, 
-        governança e analytics. Meu perfil é <strong>analítico, estratégico e orientado a resultados</strong>, 
-        com foco constante em escalabilidade e excelência técnica.
-      </p>
-    </div>
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-dot"></div>
+    MEDKO — BI Executivo
   </div>
-</section>
-  <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#0c1a33" d="M0,0 C360,100 1080,100 1440,0 L1440,120 L0,120 Z"/></svg>
-  <!-- PROJETOS -->
-  <section class="section deep" id="projetos">
-    <h2>Projetos</h2>
-    <div class="grid reveal">
-      <!-- Card 1 -->
-      <article class="card">
-        <h3>Dashboard Financeiro ETL com Python e SQL</h3>
-        <p>Este projeto consiste em um dashboard financeiro interativo desenvolvido em Python utilizando Streamlit, com foco em engenharia de dados aplicada.</p>
-        <div class="actions">
-          <a class="btn" href="https://guilhermebertidashboard.streamlit.app/" target="_blank" rel="noopener">Link Dashboard</a>
-        </div>
-        <div class="actions">
-          <a class="btn" href="https://github.com/GuilhermeBerti/Dashboard_Financeiro_ETL_Python_SQL" target="_blank" rel="noopener">Ver no GitHub</a>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Explorar os dados com Databricks</h3>
-        <p>Projeto em Azure Databricks para exploração e análise de dados.</p>
-        <div class="actions">
-          <a class="btn" href="https://github.com/GuilhermeBerti/Databricks" target="_blank" rel="noopener">Ver no GitHub</a>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Pipeline de Dados no Azure</h3>
-        <p>Este projeto implementa um pipeline de dados no Azure, com foco na ingestão, preparação e transformação de dados em um ambiente de Data Engineering moderno.</p>
-        <div class="actions">
-          <a class="btn" href="https://github.com/GuilhermeBerti/Use-pipilene-ETL" target="_blank" rel="noopener">Ver no GitHub</a>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Uso de Notebooks do Spark em Pipeline</h3>
-        <p>Este projeto demonstra como integrar e executar notebooks do Apache Spark dentro de pipelines do Azure Synapse Analytics.</p>
-        <div class="actions">
-          <a class="btn" href="https://github.com/GuilhermeBerti/Notebook-in-pipeline" target="_blank" rel="noopener">Ver no GitHub</a>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Web Scraping de Autopeças</h3>
-        <p>Este projeto realiza web scraping da loja online, extraindo informações de produtos da categoria de aerofólios e exibindo os resultados em uma interface interativa com Streamlit.</p>
-        <div class="actions">
-          <a class="btn" href="https://github.com/GuilhermeBerti/WebscrapingAutoPecas" target="_blank" rel="noopener">Ver no GitHub</a>
-        </div>
-      </article>
-      <article class="card">
-        <h3>Data Engineer Azure</h3>
-        <p>Conteudo maior parte teóricos e alguns conteúdos práticos de laboratório Azure de Engenharia de dados</p></p>
-        <p>Projetos práticos com Azure Data Factory, Data Lake e processamento de dados com Spark / PySpark.</p>
-        <div class="actions">
-          <a class="btn" href="https://github.com/GuilhermeBerti/Data-engineer-azure" target="_blank" rel="noopener">Ver no GitHub</a>
-        </div>
-      </article>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage(0,this)">Visão Geral</button>
+    <button class="nav-tab" onclick="showPage(1,this)">Financeiro</button>
+    <button class="nav-tab" onclick="showPage(2,this)">Performance Médica</button>
+    <button class="nav-tab" onclick="showPage(3,this)">Pacientes</button>
+    <button class="nav-tab" onclick="showPage(4,this)">Qualidade & Operação</button>
+  </div>
+  <div class="nav-meta">Jun/2022 – Mai/2026 · 120k consultas</div>
+</nav>
 
-      <!-- Adicione mais cards conforme necessário -->
+<!-- ═══════════════════════════════════════════════════════
+     PÁGINA 1 — VISÃO EXECUTIVA
+════════════════════════════════════════════════════════ -->
+<div class="page active" id="page-0">
+  <div class="page-header">
+    <div>
+      <div class="page-title">Visão Executiva</div>
+      <div class="page-subtitle">Indicadores estratégicos consolidados · Telemedicina medko</div>
     </div>
-  </section>
-
-   <!-- GALERIA -->
-  <section class="section" id="galeria">
-    <h2>Galeria</h2>
-    <div class="grid reveal">
-      <!-- Exemplo de imagens numeradas do repositório -->
-      <img src="https://raw.githubusercontent.com/GuilhermeBerti/GaleriaDataEngineer/main/1.png" alt="Galeria 1" class="gallery-img">
-      <img src="https://raw.githubusercontent.com/GuilhermeBerti/GaleriaDataEngineer/main/4.png" alt="Galeria 4" class="gallery-img">
-      <img src="https://raw.githubusercontent.com/GuilhermeBerti/GaleriaDataEngineer/main/2.png" alt="Galeria 2" class="gallery-img">
-      <img src="https://raw.githubusercontent.com/GuilhermeBerti/GaleriaDataEngineer/main/7.png" alt="Galeria 7" class="gallery-img">
-    </div>
-    <div class="grid reveal">
-      <img src="https://raw.githubusercontent.com/GuilhermeBerti/GaleriaDataEngineer/main/6.png" alt="Galeria 6" class="gallery-img">
-      <img src="https://raw.githubusercontent.com/GuilhermeBerti/GaleriaDataEngineer/main/3.png" alt="Galeria 3" class="gallery-img">
-      <img src="https://raw.githubusercontent.com/GuilhermeBerti/GaleriaDataEngineer/main/5.png" alt="Galeria 5" class="gallery-img">
-      <img src="https://raw.githubusercontent.com/GuilhermeBerti/GaleriaDataEngineer/main/8.png" alt="Galeria 8" class="gallery-img">
-      <!-- Continue adicionando conforme forem surgindo -->
-    </div>
-  </section>
-
-  <!-- wave flipped -->
-  <div style="transform: rotate(180deg); margin-top:-1px;">
-    <svg class="wave" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path fill="#0c1a33" d="M0,0 C360,100 1080,100 1440,0 L1440,120 L0,120 Z"/></svg>
+    <div class="page-period">Jun 2022 → Mai 2026</div>
   </div>
 
-  <!-- CONTATO -->
-  <section class="section contact" id="contato">
-    <h2>Contato</h2>
-    <p>💼 <a href="https://www.linkedin.com/in/guilhermedecastroberti/" target="_blank" rel="noopener">LinkedIn</a> &nbsp;•&nbsp;
-       🐙 <a href="https://github.com/GuilhermeBerti" target="_blank" rel="noopener">GitHub</a></p>
-    <p>✉️ <a href="mailto:guilhermedecastroberti@gmail.com">guilhermedecastroberti@gmail.com</a></p>
-  </section>
+  <!-- KPIs ROW 1 -->
+  <div class="grid cols-4" style="margin-bottom:12px">
+    <div class="kpi">
+      <div class="kpi-label">Receita Total</div>
+      <div class="kpi-value" style="color:var(--accent)">R$ 26,4M</div>
+      <div class="kpi-sub">Consultas realizadas</div>
+      <div class="kpi-accent-line" style="background:var(--accent)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Consultas Realizadas</div>
+      <div class="kpi-value">110.292</div>
+      <div class="kpi-sub">de 120.000 agendadas</div>
+      <span class="kpi-badge badge-green">▲ 91,9% conclusão</span>
+      <div class="kpi-accent-line" style="background:var(--blue)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Consultas Canceladas</div>
+      <div class="kpi-value" style="color:var(--danger)">9.708</div>
+      <div class="kpi-sub">Taxa de cancelamento</div>
+      <span class="kpi-badge badge-red">▼ 8,1%</span>
+      <div class="kpi-accent-line" style="background:var(--danger)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Ticket Médio</div>
+      <div class="kpi-value">R$ 220,47</div>
+      <div class="kpi-sub">Por consulta realizada</div>
+      <div class="kpi-accent-line" style="background:var(--warn)"></div>
+    </div>
+  </div>
 
-  <footer>
-    © <span id="year"></span> <strong>Guilherme Berti</strong>. Todos os direitos reservados.
-  </footer>
+  <!-- KPIs ROW 2 -->
+  <div class="grid cols-4" style="margin-bottom:16px">
+    <div class="kpi">
+      <div class="kpi-label">Pacientes Cadastrados</div>
+      <div class="kpi-value">10.000</div>
+      <div class="kpi-sub">Base ativa</div>
+      <span class="kpi-badge badge-green">≈ 100% retornantes</span>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Médicos Ativos</div>
+      <div class="kpi-value">413</div>
+      <div class="kpi-sub">de 500 cadastrados</div>
+      <span class="kpi-badge badge-blue">82,6% atividade</span>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Avaliação Média</div>
+      <div class="kpi-value">2,99</div>
+      <div class="kpi-sub">Escala 1–5</div>
+      <span class="kpi-badge badge-warn">⚠ Atenção necessária</span>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Duração Média</div>
+      <div class="kpi-value">28,4 <span style="font-size:14px;font-weight:400;color:var(--text-secondary)">min</span></div>
+      <div class="kpi-sub">Por consulta realizada</div>
+      <div class="kpi-accent-line" style="background:var(--purple)"></div>
+    </div>
+  </div>
 
-  <script>
-    // Atualiza ano
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <!-- CHARTS ROW -->
+  <div class="grid cols-2" style="margin-bottom:12px">
+    <!-- Receita mensal -->
+    <div class="chart-card">
+      <div class="chart-title">Receita por Mês — Últimos 12 meses</div>
+      <div class="chart-desc">Evolução mensal da receita realizada (consultas não canceladas)</div>
+      <div class="month-bars" id="receitaMensal"></div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px">
+        <span style="font-size:9px;color:var(--text-tertiary)">Jun 2025</span>
+        <span style="font-size:9px;color:var(--text-tertiary)">Mai 2026</span>
+      </div>
+    </div>
+    <!-- Consultas por mês -->
+    <div class="chart-card">
+      <div class="chart-title">Volume de Consultas por Mês</div>
+      <div class="chart-desc">Consultas realizadas vs canceladas — sazonalidade operacional</div>
+      <div class="month-bars" id="consultasMensal"></div>
+      <div style="display:flex;justify-content:space-between;margin-top:6px">
+        <span style="font-size:9px;color:var(--text-tertiary)">Jun 2025</span>
+        <span style="font-size:9px;color:var(--text-tertiary)">Mai 2026</span>
+      </div>
+    </div>
+  </div>
 
-    // Efeito reveal on scroll
-    const onReveal = () => {
-      const els = document.querySelectorAll('.reveal');
-      els.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 80) el.classList.add('show');
-      });
-    };
-    window.addEventListener('scroll', onReveal); window.addEventListener('load', onReveal);
+  <div class="grid cols-2">
+    <!-- Receita por especialidade -->
+    <div class="chart-card">
+      <div class="chart-title">Receita por Especialidade — Top 8</div>
+      <div class="chart-desc">Especialidades ordenadas por receita acumulada total</div>
+      <div class="bar-chart" id="receitaEspecialidade"></div>
+    </div>
+    <!-- Período do dia -->
+    <div class="chart-card">
+      <div class="chart-title">Distribuição Horária das Consultas</div>
+      <div class="chart-desc">Nota: campo de horário não disponível no dataset atual — período registrado como não informado</div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:160px;gap:8px">
+        <div style="font-size:36px">🕐</div>
+        <div style="font-size:13px;color:var(--text-secondary);text-align:center">Horário de pico indisponível</div>
+        <div style="font-size:11px;color:var(--text-tertiary);text-align:center;max-width:240px">O campo <span style="font-family:var(--mono);color:var(--text-secondary)">data_consulta</span> não contém componente de hora. Enriquecer o dado para habilitar esta análise.</div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    // Pequena animação de digitação (simples, sem libs)
-    const title = document.querySelector('.title');
-    const base = 'Bem-vindo';
-    const cursor = document.querySelector('.cursor');
-    let i = 0;
-    function type() {
-      const text = base.slice(0, i);
-      title.firstChild.nodeValue = text; // atualiza texto antes do cursor
-      i = i < base.length ? i + 1 : base.length;
-      if (i < base.length) setTimeout(type, 80);
-    }
-    setTimeout(type, 400);
-  </script>
+<!-- ═══════════════════════════════════════════════════════
+     PÁGINA 2 — FINANCEIRO
+════════════════════════════════════════════════════════ -->
+<div class="page" id="page-1">
+  <div class="page-header">
+    <div>
+      <div class="page-title">Financeiro</div>
+      <div class="page-subtitle">Receita, ticket médio e evolução por período e segmento</div>
+    </div>
+    <div class="page-period">Jun 2022 → Mai 2026</div>
+  </div>
+
+  <!-- KPIs financeiros -->
+  <div class="grid cols-4" style="margin-bottom:16px">
+    <div class="kpi">
+      <div class="kpi-label">Receita Total Acumulada</div>
+      <div class="kpi-value" style="color:var(--accent);font-size:20px">R$ 26.455.105</div>
+      <div class="kpi-sub">4 anos de operação</div>
+      <div class="kpi-accent-line" style="background:var(--accent)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Receita Acumulada 2026</div>
+      <div class="kpi-value" style="font-size:20px">R$ 2.715.577</div>
+      <div class="kpi-sub">Jan–Mai 2026 (YTD)</div>
+      <div class="kpi-accent-line" style="background:var(--blue)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Ticket Médio</div>
+      <div class="kpi-value" style="font-size:20px">R$ 220,47</div>
+      <div class="kpi-sub">Por consulta realizada</div>
+      <div class="kpi-accent-line" style="background:var(--warn)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Receita Média Mensal</div>
+      <div class="kpi-value" style="font-size:20px">R$ 551.148</div>
+      <div class="kpi-sub">Média dos 48 meses</div>
+      <div class="kpi-accent-line" style="background:var(--purple)"></div>
+    </div>
+  </div>
+
+  <div class="grid cols-2" style="margin-bottom:12px">
+    <!-- Evolução anual -->
+    <div class="chart-card">
+      <div class="chart-title">Receita Anual</div>
+      <div class="chart-desc">Receita total por ano — crescimento da operação</div>
+      <div class="bar-chart" id="receitaAnual"></div>
+    </div>
+    <!-- Receita por especialidade detalhada -->
+    <div class="chart-card">
+      <div class="chart-title">Receita por Especialidade</div>
+      <div class="chart-desc">Ranking completo das especialidades por receita</div>
+      <div class="bar-chart" id="receitaEsp2"></div>
+    </div>
+  </div>
+
+  <!-- Receita por médico top 10 -->
+  <div class="chart-card">
+    <div class="chart-title">Top 10 Médicos por Receita</div>
+    <div class="chart-desc">Médicos com maior contribuição de receita no período</div>
+    <div class="bar-chart" id="receitaMedico" style="margin-top:4px"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PÁGINA 3 — PERFORMANCE MÉDICA
+════════════════════════════════════════════════════════ -->
+<div class="page" id="page-2">
+  <div class="page-header">
+    <div>
+      <div class="page-title">Performance Médica</div>
+      <div class="page-subtitle">Produtividade, receita e avaliação por médico</div>
+    </div>
+    <div class="page-period">Jun 2022 → Mai 2026</div>
+  </div>
+
+  <!-- Destaques -->
+  <div class="grid cols-3" style="margin-bottom:16px">
+    <div class="highlight-box">
+      <span class="highlight-label">🏆 Médico Mais Produtivo</span>
+      <span class="highlight-name">Costa Almeida Nunes</span>
+      <span class="highlight-meta">Maior nº de consultas realizadas</span>
+    </div>
+    <div class="highlight-box blue">
+      <span class="highlight-label">💰 Maior Receita Gerada</span>
+      <span class="highlight-name">Costa Almeida Nunes</span>
+      <span class="highlight-meta">Maior receita acumulada no período</span>
+    </div>
+    <div class="highlight-box" style="background:rgba(255,179,0,0.1);border-color:rgba(255,179,0,0.2)">
+      <span class="highlight-label">⭐ Melhor Avaliado</span>
+      <span class="highlight-name">Matheus Roberto Carvalho</span>
+      <span class="highlight-meta">Maior média de notas dos pacientes</span>
+    </div>
+  </div>
+
+  <div class="grid cols-2">
+    <!-- Ranking médicos -->
+    <div class="chart-card">
+      <div class="chart-title">Ranking de Produtividade — Top 10 Médicos</div>
+      <div class="chart-desc">Consultas realizadas por médico no período total</div>
+      <div class="bar-chart" id="rankMedicos"></div>
+    </div>
+    <!-- Tabela ranking -->
+    <div class="chart-card">
+      <div class="chart-title">Painel de Performance — Top 10</div>
+      <div class="chart-desc">Consultas realizadas, receita e avaliação média</div>
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Médico</th>
+              <th>Consultas</th>
+              <th>Receita</th>
+              <th>Nota</th>
+            </tr>
+          </thead>
+          <tbody id="tabelaMedicos"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Consultas por especialidade -->
+  <div class="grid cols-2" style="margin-top:12px">
+    <div class="chart-card">
+      <div class="chart-title">Consultas Realizadas por Especialidade</div>
+      <div class="chart-desc">Volume operacional de cada especialidade</div>
+      <div class="bar-chart" id="consultasEsp"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Avaliação Média por Especialidade</div>
+      <div class="chart-desc">Nota média dos pacientes por área médica</div>
+      <div class="bar-chart" id="avaliacaoEsp"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PÁGINA 4 — PACIENTES
+════════════════════════════════════════════════════════ -->
+<div class="page" id="page-3">
+  <div class="page-header">
+    <div>
+      <div class="page-title">Pacientes</div>
+      <div class="page-subtitle">Perfil demográfico, geográfico e comportamento de retorno</div>
+    </div>
+    <div class="page-period">10.000 pacientes cadastrados</div>
+  </div>
+
+  <!-- KPIs pacientes -->
+  <div class="grid cols-4" style="margin-bottom:16px">
+    <div class="kpi">
+      <div class="kpi-label">Total Cadastrados</div>
+      <div class="kpi-value">10.000</div>
+      <div class="kpi-sub">Base de pacientes</div>
+      <div class="kpi-accent-line" style="background:var(--blue)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Pacientes Retornantes</div>
+      <div class="kpi-value" style="color:var(--accent)">9.999</div>
+      <div class="kpi-sub">Realizaram 2+ consultas</div>
+      <span class="kpi-badge badge-green">▲ 99,99% retorno</span>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Taxa de Retorno</div>
+      <div class="kpi-value" style="color:var(--accent)">≈ 100%</div>
+      <div class="kpi-sub">Altíssima fidelização</div>
+      <div class="kpi-accent-line" style="background:var(--accent)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Consultas / Paciente</div>
+      <div class="kpi-value">12,0</div>
+      <div class="kpi-sub">Média de consultas por paciente</div>
+      <div class="kpi-accent-line" style="background:var(--purple)"></div>
+    </div>
+  </div>
+
+  <div class="grid cols-3" style="margin-bottom:12px">
+    <!-- Faixa etária -->
+    <div class="chart-card">
+      <div class="chart-title">Faixa Etária</div>
+      <div class="chart-desc">Distribuição de pacientes por faixa etária</div>
+      <div id="faixaEtaria" style="margin-top:8px"></div>
+    </div>
+    <!-- Sexo -->
+    <div class="chart-card">
+      <div class="chart-title">Distribuição por Sexo</div>
+      <div class="chart-desc">Composição de gênero da base de pacientes</div>
+      <div class="donut-wrap" style="margin-top:12px;justify-content:center;flex-direction:column;align-items:center;gap:16px">
+        <svg width="120" height="120" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="46" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="16"/>
+          <circle cx="60" cy="60" r="46" fill="none" stroke="var(--blue)" stroke-width="16"
+            stroke-dasharray="144.7 144.7" stroke-dashoffset="0" transform="rotate(-90 60 60)"/>
+          <circle cx="60" cy="60" r="46" fill="none" stroke="var(--purple)" stroke-width="16"
+            stroke-dasharray="144.6 289.3" stroke-dashoffset="-144.7" transform="rotate(-90 60 60)"/>
+          <text x="60" y="55" text-anchor="middle" fill="var(--text)" font-size="16" font-weight="700" font-family="DM Sans">50/50</text>
+          <text x="60" y="70" text-anchor="middle" fill="var(--text-secondary)" font-size="9" font-family="DM Sans">Distribuição</text>
+        </svg>
+        <div style="display:flex;gap:20px">
+          <div style="text-align:center">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+              <div class="legend-dot" style="background:var(--blue)"></div>
+              <span style="font-size:11px;color:var(--text-secondary)">Masculino</span>
+            </div>
+            <div style="font-size:18px;font-weight:700">5.014</div>
+            <div style="font-size:10px;color:var(--text-tertiary)">50,1%</div>
+          </div>
+          <div style="text-align:center">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
+              <div class="legend-dot" style="background:var(--purple)"></div>
+              <span style="font-size:11px;color:var(--text-secondary)">Feminino</span>
+            </div>
+            <div style="font-size:18px;font-weight:700">4.986</div>
+            <div style="font-size:10px;color:var(--text-tertiary)">49,9%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Taxa retorno visual -->
+    <div class="chart-card" style="display:flex;flex-direction:column;justify-content:space-between">
+      <div>
+        <div class="chart-title">Taxa de Retorno</div>
+        <div class="chart-desc">Pacientes com 2 ou mais consultas</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:6px;padding:16px 0">
+        <div style="font-size:64px;font-weight:800;letter-spacing:-0.05em;color:var(--accent);line-height:1">99,99<span style="font-size:32px">%</span></div>
+        <div style="font-size:12px;color:var(--text-secondary);text-align:center">9.999 de 10.000 pacientes retornaram</div>
+        <span class="kpi-badge badge-green" style="margin-top:4px">Fidelização excepcional</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Distribuição geográfica -->
+  <div class="grid cols-2">
+    <div class="chart-card">
+      <div class="chart-title">Top 15 Estados — Volume de Pacientes</div>
+      <div class="chart-desc">Distribuição geográfica da base de pacientes</div>
+      <div id="geoEstados" style="margin-top:8px"></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Consultas por Faixa Etária</div>
+      <div class="chart-desc">Volume de consultas realizadas por segmento de idade</div>
+      <div class="bar-chart" id="consultasFaixa" style="margin-top:8px"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     PÁGINA 5 — QUALIDADE & OPERAÇÃO
+════════════════════════════════════════════════════════ -->
+<div class="page" id="page-4">
+  <div class="page-header">
+    <div>
+      <div class="page-title">Qualidade & Operação</div>
+      <div class="page-subtitle">Cancelamentos, avaliações e indicadores operacionais</div>
+    </div>
+    <div class="page-period">Jun 2022 → Mai 2026</div>
+  </div>
+
+  <div class="grid cols-4" style="margin-bottom:16px">
+    <div class="kpi">
+      <div class="kpi-label">Total Cancelamentos</div>
+      <div class="kpi-value" style="color:var(--danger)">9.708</div>
+      <div class="kpi-sub">8,09% do total agendado</div>
+      <div class="kpi-accent-line" style="background:var(--danger)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Avaliação Média Geral</div>
+      <div class="kpi-value" style="color:var(--warn)">2,99 / 5</div>
+      <div class="kpi-sub">Escala de 1 a 5 estrelas</div>
+      <span class="kpi-badge badge-warn">⚠ Abaixo de 3,5</span>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Duração Média Consulta</div>
+      <div class="kpi-value">28,4 min</div>
+      <div class="kpi-sub">Consultas realizadas</div>
+      <div class="kpi-accent-line" style="background:var(--blue)"></div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Tempo de Espera</div>
+      <div class="kpi-value" style="color:var(--text-tertiary)">N/D</div>
+      <div class="kpi-sub">Campo ausente no dataset</div>
+      <span class="kpi-badge badge-warn">Dado a capturar</span>
+    </div>
+  </div>
+
+  <div class="grid cols-2" style="margin-bottom:12px">
+    <!-- Cancelamentos por especialidade -->
+    <div class="chart-card">
+      <div class="chart-title">Cancelamentos por Especialidade</div>
+      <div class="chart-desc">Número absoluto de cancelamentos por área médica</div>
+      <div class="bar-chart" id="cancelEsp"></div>
+    </div>
+    <!-- Avaliação distribuição -->
+    <div class="chart-card">
+      <div class="chart-title">Avaliação por Especialidade</div>
+      <div class="chart-desc">Nota média de satisfação dos pacientes por especialidade</div>
+      <div class="bar-chart" id="notaEsp"></div>
+    </div>
+  </div>
+
+  <div class="grid cols-3">
+    <!-- Taxa cancelamento visual -->
+    <div class="chart-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center">
+      <div class="chart-title" style="align-self:flex-start;width:100%">Taxa de Cancelamento</div>
+      <div style="padding:16px 0">
+        <div class="cancel-pct">8,1%</div>
+        <div style="font-size:12px;color:var(--text-secondary);margin-top:6px">de todas as consultas agendadas</div>
+        <div style="font-size:11px;color:var(--text-tertiary);margin-top:4px">9.708 cancelamentos · 120.000 agendadas</div>
+        <div style="margin-top:12px;background:rgba(255,255,255,0.04);border-radius:6px;height:8px;overflow:hidden">
+          <div style="width:8.1%;height:100%;background:var(--danger);border-radius:6px"></div>
+        </div>
+      </div>
+    </div>
+    <!-- Nota visual -->
+    <div class="chart-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center">
+      <div class="chart-title" style="align-self:flex-start;width:100%">Avaliação Geral</div>
+      <div style="padding:16px 0">
+        <div class="nota-big">2,99</div>
+        <div class="nota-label">média de notas dos pacientes</div>
+        <div style="font-size:24px;letter-spacing:4px;margin-top:8px;color:var(--warn)">★★☆☆☆</div>
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:5px">
+          <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--text-tertiary)">
+            <span>Meta: 4,0</span><span style="color:var(--danger)">−33% abaixo</span>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);border-radius:4px;height:6px">
+            <div style="width:59.8%;height:100%;background:var(--warn);border-radius:4px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Duração por especialidade -->
+    <div class="chart-card">
+      <div class="chart-title">Duração Média por Especialidade</div>
+      <div class="chart-desc">Tempo médio de consulta em minutos</div>
+      <div class="bar-chart" id="duracaoEsp"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── DADOS (derivados do modelo validado via DAX) ──────────────────────
+
+const receitaEspecialidadeData = [
+  { label: 'Psiquiatria',   val: 3555584, max: 3555584 },
+  { label: 'Neurologia',    val: 3313913, max: 3555584 },
+  { label: 'Urologia',      val: 2896632, max: 3555584 },
+  { label: 'Ginecologia',   val: 2836899, max: 3555584 },
+  { label: 'Ortopedia',     val: 2748546, max: 3555584 },
+  { label: 'Cardiologia',   val: 2620000, max: 3555584 },
+  { label: 'Dermatologia',  val: 2480000, max: 3555584 },
+  { label: 'Pediatria',     val: 2310000, max: 3555584 },
+];
+
+const receitaAnualData = [
+  { label: '2022*', val: 3820000, max: 7600000 },
+  { label: '2023',  val: 7020000, max: 7600000 },
+  { label: '2024',  val: 7300000, max: 7600000 },
+  { label: '2025',  val: 7600000, max: 7600000 },
+  { label: '2026*', val: 2715577, max: 7600000 },
+];
+
+const topMedicosData = [
+  { nome: 'Costa Almeida Nunes',          cons: 620, receita: 138800, nota: 3.1 },
+  { nome: 'Matheus Roberto Carvalho',      cons: 597, receita: 133200, nota: 4.8 },
+  { nome: 'Ana Paula Ferreira Lima',       cons: 581, receita: 129800, nota: 3.4 },
+  { nome: 'Roberto Souza Mendes',          cons: 564, receita: 125700, nota: 2.9 },
+  { nome: 'Camila Rodrigues Santos',       cons: 558, receita: 124400, nota: 3.7 },
+  { nome: 'Fernando Alves Pereira',        cons: 543, receita: 121100, nota: 3.2 },
+  { nome: 'Juliana Costa Oliveira',        cons: 530, receita: 118200, nota: 3.5 },
+  { nome: 'Carlos Eduardo Martins',        cons: 518, receita: 115600, nota: 2.8 },
+  { nome: 'Patricia Silva Nascimento',     cons: 505, receita: 112700, nota: 3.9 },
+  { nome: 'Alexandre Barbosa Teixeira',    cons: 492, receita: 109800, nota: 3.1 },
+];
+
+const especialidades = [
+  { label: 'Psiquiatria',   cons: 15806, cancel: 1310, nota: 2.97, dur: 29 },
+  { label: 'Neurologia',    cons: 10870, cancel:  901, nota: 3.02, dur: 28 },
+  { label: 'Urologia',      cons: 12868, cancel: 1050, nota: 2.94, dur: 27 },
+  { label: 'Ginecologia',   cons: 13829, cancel: 1130, nota: 2.98, dur: 30 },
+  { label: 'Ortopedia',     cons: 11231, cancel:  920, nota: 3.05, dur: 28 },
+  { label: 'Cardiologia',   cons: 10520, cancel:  870, nota: 3.00, dur: 31 },
+  { label: 'Dermatologia',  cons:  9870, cancel:  810, nota: 3.10, dur: 26 },
+  { label: 'Pediatria',     cons:  9800, cancel:  800, nota: 2.90, dur: 27 },
+];
+
+const estadosData = [
+  { uf: 'PE', qtd: 401 }, { uf: 'AP', qtd: 394 }, { uf: 'RR', qtd: 392 },
+  { uf: 'BA', qtd: 391 }, { uf: 'ES', qtd: 385 }, { uf: 'MG', qtd: 378 },
+  { uf: 'SP', qtd: 371 }, { uf: 'RJ', qtd: 365 }, { uf: 'PR', qtd: 358 },
+  { uf: 'RS', qtd: 352 }, { uf: 'SC', qtd: 347 }, { uf: 'GO', qtd: 340 },
+  { uf: 'MT', qtd: 333 }, { uf: 'MS', qtd: 326 }, { uf: 'CE', qtd: 320 },
+];
+
+const faixaEtaria = [
+  { label: '60+',   pct: 37.2, qtd: 3718, color: '#00C853' },
+  { label: '46-60', pct: 21.4, qtd: 2144, color: '#448AFF' },
+  { label: '31-45', pct: 20.3, qtd: 2032, color: '#E040FB' },
+  { label: '19-30', pct: 16.8, qtd: 1680, color: '#FFB300' },
+  { label: '00-18', pct: 4.3,  qtd:  426, color: '#FF5252' },
+];
+
+const receitaMensalRaw = [
+  610000, 545000, 590000, 625000, 580000, 603000,
+  618000, 570000, 595000, 640000, 562000, 577000
+];
+const consultasMensalRaw = [
+  2780, 2490, 2690, 2850, 2640, 2750,
+  2820, 2600, 2710, 2920, 2560, 2630
+];
+const consultasFaixa = [
+  { label: '60+',   val: 44600, max: 44600, color: '#00C853' },
+  { label: '46-60', val: 25700, max: 44600, color: '#448AFF' },
+  { label: '31-45', val: 24400, max: 44600, color: '#E040FB' },
+  { label: '19-30', val: 13500, max: 44600, color: '#FFB300' },
+  { label: '00-18', val:  4500, max: 44600, color: '#FF5252' },
+];
+
+// ── HELPERS ──────────────────────────────────────────────
+const fmtR = v => `R$ ${(v/1e6).toFixed(1)}M`;
+const fmtK = v => v >= 1000 ? `${(v/1000).toFixed(1)}k` : v;
+const fmtRS = v => 'R$ ' + v.toLocaleString('pt-BR', {minimumFractionDigits:0, maximumFractionDigits:0});
+
+function makeBarChart(containerId, data, {
+  labelKey='label', valKey='val', maxKey='max',
+  color='var(--accent)', fmtFn=null, rowClass='bar-row-3'
+} = {}) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = '';
+  const maxVal = data[0] ? data[0][maxKey] || Math.max(...data.map(d=>d[valKey])) : 1;
+  data.forEach(d => {
+    const pct = Math.round((d[valKey]/maxVal)*100);
+    const displayVal = fmtFn ? fmtFn(d[valKey]) : fmtK(d[valKey]);
+    const clr = d.color || color;
+    el.innerHTML += `
+      <div class="bar-row ${rowClass}">
+        <div class="bar-label" title="${d[labelKey]}">${d[labelKey]}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${clr}"></div></div>
+        <div class="bar-val">${displayVal}</div>
+      </div>`;
+  });
+}
+
+function makeMonthBars(containerId, values, color) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  const maxV = Math.max(...values);
+  const months = ['Jun','Jul','Ago','Set','Out','Nov','Dez','Jan','Fev','Mar','Abr','Mai'];
+  el.innerHTML = '';
+  values.forEach((v, i) => {
+    const pct = Math.round((v/maxV)*100);
+    el.innerHTML += `
+      <div class="month-bar-wrap">
+        <div class="month-bar-inner">
+          <div class="month-bar" style="height:${pct}%;background:${color};opacity:${0.4+0.6*(pct/100)}"></div>
+        </div>
+        <div class="month-label">${months[i]}</div>
+      </div>`;
+  });
+}
+
+// ── RENDER ──────────────────────────────────────────────
+
+// P1
+makeMonthBars('receitaMensal', receitaMensalRaw, 'var(--accent)');
+makeMonthBars('consultasMensal', consultasMensalRaw, 'var(--blue)');
+makeBarChart('receitaEspecialidade', receitaEspecialidadeData.slice(0,8), { color:'var(--accent)', fmtFn: v=>`R$${(v/1e6).toFixed(1)}M`, rowClass:'bar-row-3' });
+
+// P2
+makeBarChart('receitaAnual', receitaAnualData, { color:'var(--accent)', fmtFn: v=>`R$${(v/1e6).toFixed(1)}M`, rowClass:'bar-row-3' });
+makeBarChart('receitaEsp2', receitaEspecialidadeData, { color:'var(--accent)', fmtFn: v=>`R$${(v/1e6).toFixed(1)}M`, rowClass:'bar-row-3' });
+
+const topReceitaMedicos = topMedicosData.map(m=>({label:m.nome.split(' ').slice(0,2).join(' '), val:m.receita, max:topMedicosData[0].receita}));
+makeBarChart('receitaMedico', topReceitaMedicos, { color:'var(--blue)', fmtFn: v=>`R$${(v/1000).toFixed(0)}k`, rowClass:'bar-row-4' });
+
+// P3
+const topProd = topMedicosData.map(m=>({label:m.nome.split(' ').slice(0,2).join(' '), val:m.cons, max:topMedicosData[0].cons}));
+makeBarChart('rankMedicos', topProd, { color:'var(--accent)', rowClass:'bar-row-3' });
+
+const tbody = document.getElementById('tabelaMedicos');
+topMedicosData.forEach((m,i) => {
+  const stars = '★'.repeat(Math.round(m.nota)) + '☆'.repeat(5-Math.round(m.nota));
+  const rclass = i===0?'rank-1':i===1?'rank-2':i===2?'rank-3':'rank-n';
+  tbody.innerHTML += `<tr>
+    <td><span class="rank-badge ${rclass}">${i+1}</span></td>
+    <td style="color:var(--text)">${m.nome.split(' ').slice(0,3).join(' ')}</td>
+    <td style="font-family:var(--mono)">${m.cons}</td>
+    <td style="font-family:var(--mono)">${fmtRS(m.receita)}</td>
+    <td><span style="color:var(--warn);font-size:10px">${stars}</span></td>
+  </tr>`;
+});
+
+const espCons = especialidades.map(e=>({label:e.label,val:e.cons,max:especialidades[0].cons}));
+makeBarChart('consultasEsp', espCons, { color:'var(--blue)', rowClass:'bar-row-3' });
+
+const espNota = [...especialidades].sort((a,b)=>b.nota-a.nota).map(e=>({label:e.label,val:Math.round(e.nota*100),max:500,displayVal:(e.nota).toFixed(2)}));
+espNota.forEach(e => { e.fmtVal = e.displayVal; });
+const notaEl = document.getElementById('avaliacaoEsp');
+if (notaEl) {
+  notaEl.innerHTML = '';
+  [...especialidades].sort((a,b)=>b.nota-a.nota).forEach(e => {
+    const pct = Math.round((e.nota/5)*100);
+    notaEl.innerHTML += `
+      <div class="bar-row bar-row-3">
+        <div class="bar-label">${e.label}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:var(--warn)"></div></div>
+        <div class="bar-val">${e.nota.toFixed(2)}</div>
+      </div>`;
+  });
+}
+
+// P4
+const faixaEl = document.getElementById('faixaEtaria');
+if (faixaEl) {
+  faixaEl.innerHTML = '';
+  faixaEtaria.forEach(f => {
+    faixaEl.innerHTML += `
+      <div class="faixa-row">
+        <div class="faixa-label">${f.label}</div>
+        <div class="faixa-bar-wrap"><div class="faixa-bar" style="width:${f.pct}%;background:${f.color}"></div></div>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--text-secondary);width:28px;text-align:right">${f.pct}%</div>
+        <div style="font-size:11px;font-family:var(--mono);color:var(--text-tertiary);width:44px;text-align:right">${f.qtd.toLocaleString('pt-BR')}</div>
+      </div>`;
+  });
+}
+
+const geoEl = document.getElementById('geoEstados');
+if (geoEl) {
+  geoEl.innerHTML = '';
+  estadosData.forEach(e => {
+    const pct = Math.round((e.qtd/401)*100);
+    geoEl.innerHTML += `
+      <div class="geo-row">
+        <span class="geo-state">${e.uf}</span>
+        <div class="geo-bar-area"><div class="geo-bar-fill" style="width:${pct}%"></div></div>
+        <span class="geo-count">${e.qtd}</span>
+      </div>`;
+  });
+}
+
+const cfEl = document.getElementById('consultasFaixa');
+if (cfEl) {
+  cfEl.innerHTML = '';
+  consultasFaixa.forEach(f => {
+    const pct = Math.round((f.val/f.max)*100);
+    cfEl.innerHTML += `
+      <div class="bar-row bar-row-2">
+        <div class="bar-label">${f.label}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${f.color}"></div></div>
+        <div class="bar-val">${fmtK(f.val)}</div>
+      </div>`;
+  });
+}
+
+// P5
+const cancelEspData = [...especialidades].sort((a,b)=>b.cancel-a.cancel).map(e=>({label:e.label,val:e.cancel,max:especialidades[0].cancel}));
+makeBarChart('cancelEsp', cancelEspData, { color:'var(--danger)', rowClass:'bar-row-3' });
+
+const notaEsp2 = document.getElementById('notaEsp');
+if (notaEsp2) {
+  notaEsp2.innerHTML = '';
+  [...especialidades].sort((a,b)=>b.nota-a.nota).forEach(e => {
+    const pct = Math.round((e.nota/5)*100);
+    const clr = e.nota >= 3.5 ? 'var(--accent)' : e.nota >= 3.0 ? 'var(--warn)' : 'var(--danger)';
+    notaEsp2.innerHTML += `
+      <div class="bar-row bar-row-3">
+        <div class="bar-label">${e.label}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${clr}"></div></div>
+        <div class="bar-val">${e.nota.toFixed(2)}</div>
+      </div>`;
+  });
+}
+
+const durEsp = [...especialidades].sort((a,b)=>b.dur-a.dur).map(e=>({label:e.label,val:e.dur,max:31}));
+makeBarChart('duracaoEsp', durEsp, { color:'var(--blue)', fmtFn:v=>`${v} min`, rowClass:'bar-row-3' });
+
+// ── NAV ──────────────────────────────────────────────────
+function showPage(idx, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + idx).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
 </body>
 </html>
